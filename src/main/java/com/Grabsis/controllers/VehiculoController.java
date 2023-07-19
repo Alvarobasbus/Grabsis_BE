@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/Vehiculo")
+@RequestMapping("/vehiculo")
 @RequiredArgsConstructor
 public class VehiculoController {
 
@@ -21,7 +21,7 @@ public class VehiculoController {
     }
 
     @GetMapping("/{patente}")
-    public Vehiculo obtenerPorId(@PathVariable Long patente){
+    public Vehiculo obtenerPorId(@PathVariable String patente){
         Vehiculo vehiculo = vehiculoService.obtenerPorId(patente);
 
         return vehiculo;

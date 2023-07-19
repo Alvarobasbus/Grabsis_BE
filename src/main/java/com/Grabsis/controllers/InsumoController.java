@@ -23,11 +23,19 @@ public class InsumoController {
         return lista;
     }
 
+    @GetMapping("/reponer")
+    public List<Insumo> reponer(){
+        List<Insumo> lista= insumoService.listadoReponer();
+        return lista;
+    }
+
 
     @PostMapping("/crear")
     public Insumo crear(@RequestBody Insumo insumo){
         return insumoService.crear(insumo);
     }
+
+
 
     @PostMapping("/aumentar")
     public Insumo aumentar(@RequestBody Insumo insumo){

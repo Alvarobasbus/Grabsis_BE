@@ -14,14 +14,14 @@ public class Turno  {
 
     private Long idTurno;
 
-    private Date fecha;
+    private LocalDate fecha;
     private String hora;
     private Boolean pagado;
     private Boolean ingreso;
     private Usuario usuario;
     private Empleado empleado;
     private Vehiculo vehiculo;
-    private String formulario;
+    private Formulario formulario;
     private Boolean isDeleted;
 
 

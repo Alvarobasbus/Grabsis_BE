@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -14,9 +16,10 @@ import java.io.Serializable;
 public class Servicio  {
 
 
-    private Long id;
+    private Long idServicio;
     private String descripcion;
     private double precio;
+    private LocalDate fecha;
 
 
 }

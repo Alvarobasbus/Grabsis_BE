@@ -9,12 +9,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Grabsis" />
         <module name="Grabsis_BackEnd" />
+        <module name="Grabsis_BE" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Grabsis" options="-parameters" />
+      <module name="Grabsis_BE" options="-parameters" />
       <module name="Grabsis_BackEnd" options="-parameters" />
     </option>
   </component>

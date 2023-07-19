@@ -6,5 +6,7 @@ public interface VehiculoService {
 
     Vehiculo crearVehiculo(Vehiculo vehiculo);
 
-    Vehiculo obtenerPorId(Long patente);
+    Vehiculo obtenerPorId(String patente);
+    void grabadoCristales(Vehiculo vehiculo);
+    void grabadoAutopartes(Vehiculo vehiculo);
 }

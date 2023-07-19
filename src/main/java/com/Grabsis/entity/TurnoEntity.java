@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 
 @Data
@@ -15,7 +16,7 @@ public class TurnoEntity extends Deleteable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTurno;
 
-    private Date fecha;
+    private LocalDate fecha;
     private String hora;
     private boolean pagado=false;
     private boolean ingreso=false;
@@ -33,7 +34,9 @@ public class TurnoEntity extends Deleteable {
     @JoinColumn(name="idVehiculo")
     private VehiculoEntity vehiculo;
 
-    private String formulario;
+    @OneToOne
+    @JoinColumn(name="idFormulario")
+    private FormularioEntity formulario;
 
     public void pagado(){ this.pagado = true; }
 
