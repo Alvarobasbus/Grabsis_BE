@@ -8,6 +8,7 @@ import lombok.Data;
 @Entity
 @Table(name= "vehiculo")
 public class VehiculoEntity extends Deleteable {
+
     @Id
     private String patente;
 
@@ -18,6 +19,6 @@ public class VehiculoEntity extends Deleteable {
     private String motor;
     private String chasis;
     private String tipo;
-    private Integer autopartes;
-    private Integer cristales;
+    private Boolean autopartes;
+    private Boolean cristales;
 }

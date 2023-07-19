@@ -3,9 +3,7 @@ package com.Grabsis.services.impl;
 import com.Grabsis.entity.EmpleadoEntity;
 import com.Grabsis.entity.InsumoEntity;
 import com.Grabsis.entity.MarcaEntity;
-import com.Grabsis.models.Empleado;
-import com.Grabsis.models.Insumo;
-import com.Grabsis.models.Marca;
+import com.Grabsis.models.*;
 import com.Grabsis.repositories.InsumoRepository;
 import com.Grabsis.services.InsumoService;
 import jakarta.persistence.EntityNotFoundException;
@@ -16,6 +14,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -123,5 +122,30 @@ public class InsumoServiceImpl implements InsumoService {
 
         return response;
 
+    }
+
+    @Override
+    public List<InformeInsumosDTO> listadoBaja(LocalDate fecha1, LocalDate fecha2) {
+        List<InformeInsumosDTO> informe = insumoRepository.listadoBaja(fecha1,fecha2);
+
+        return informe;
+    }
+
+    @Override
+    public List<InformeInsumosDTO> listadoAlta(LocalDate fecha1, LocalDate fecha2) {
+        List<InformeInsumosDTO> informe = insumoRepository.listadoAlta(fecha1,fecha2);
+
+        return informe;
+    }
+
+    @Override
+    public List<Insumo> listadoReponer() {
+        List<InsumoEntity> lista = insumoRepository.listadoReponer();
+
+        List<Insumo> listaInsumo = lista.stream()
+                .map(entity ->modelMapper.map(entity, Insumo.class))
+                .collect(Collectors.toList());
+
+        return listaInsumo;
     }
 }

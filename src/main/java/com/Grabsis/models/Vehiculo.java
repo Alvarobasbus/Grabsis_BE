@@ -22,7 +22,7 @@ public class Vehiculo implements Serializable {
     private String motor;
     private String chasis;
     private String tipo;
-    private Integer autopartes;
-    private Integer cristales;
+    private Boolean autopartes;
+    private Boolean cristales;
 
 }

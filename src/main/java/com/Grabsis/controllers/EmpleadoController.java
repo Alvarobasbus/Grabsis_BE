@@ -32,6 +32,12 @@ public class EmpleadoController {
         return empleado;
     }
 
+    @GetMapping("/documento/{documento}")
+    public Empleado obtenerPorDocumento(@PathVariable Integer documento){
+        Empleado empleado= empleadoService.obtenerPorDocumento(documento);
+        return empleado;
+    }
+
 
     @PostMapping("/modificar")
     public Empleado modificarEmpleado(@RequestBody Empleado empleado){

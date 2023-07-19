@@ -28,6 +28,12 @@ public class VehiculoServiceImpl implements VehiculoService {
     public Vehiculo crearVehiculo(Vehiculo vehiculo) {
         VehiculoEntity creado= modelMapper.map(vehiculo, VehiculoEntity.class);
         VehiculoEntity created= null;
+        if(creado.getAutopartes()==null){
+            creado.setAutopartes(false);
+        }
+        if(creado.getCristales()==null){
+            creado.setCristales(false);
+        }
         Vehiculo response= null;
 
         if(creado !=null){
@@ -43,14 +49,40 @@ public class VehiculoServiceImpl implements VehiculoService {
     }
 
     @Override
-    public Vehiculo obtenerPorId(Long patente) {
-        Optional<VehiculoEntity> opVehiculo= vehiculoRepository.findById(patente);
+    public Vehiculo obtenerPorId(String patente) {
+        VehiculoEntity opVehiculo= vehiculoRepository.findByPatente(patente);
 
-        if(opVehiculo.isPresent()){
+
             Vehiculo vehiculo = modelMapper.map(opVehiculo, Vehiculo.class);
 
             return  vehiculo;
+
+    }
+
+    @Override
+    public void grabadoCristales(Vehiculo vehiculo) {
+        try{
+            VehiculoEntity v= vehiculoRepository.findByPatente(vehiculo.getPatente());
+            vehiculo.setCristales(true);
+            vehiculoRepository.save(v);
+        }catch (Exception e){
+            throw new EntityNotFoundException("No es posible efectuar el grabado de cristales en el vehiculo ");
         }
-        throw new EntityNotFoundException("No existe Vehiculo con la patente: " + patente);
+
+    }
+
+    @Override
+    public void grabadoAutopartes(Vehiculo vehiculo) {
+
+        try{
+            VehiculoEntity v= vehiculoRepository.findByPatente(vehiculo.getPatente());
+            vehiculo.setAutopartes(true);
+            vehiculoRepository.save(v);
+
+
+        }catch (Exception e){
+            throw new EntityNotFoundException("No es posible efectuar el grabado de autopartes en el vehiculo ");
+        }
+
     }
 }
